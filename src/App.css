@@ -1,0 +1,392 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+:root {
+  --background-color: #effaf1;
+  --text-color: #424242;
+  --accent-color: #4caf50;
+  --progress-bg: #cecccc; /* Background of the progress bar */
+  --progress-fill: #4caf50; /* Filled portion (green) */
+  --progress-text: #000; /* Text inside progress bar */
+  --name: #000;
+  --toggle-bg: #4caf50;
+  --toggle-text: #ffffff;
+  --toggle-hover: #357a38;
+  --project-item: #4a90e2;
+  --box-shadow: rgba(0, 0, 0, 0.473);
+}
+
+.dark-mode {
+  --background-color: #0f172a;
+  --text-color: #b8b6b6;
+  --accent-color: #90caf9;
+  --progress-bg: #2c2c2c; /* Dark gray background */
+  --progress-fill: #e9f5ff; /* Filled portion (blue) */
+  --progress-text: #fff; /* White text inside progress bar */
+  --name: #fff;
+  --toggle-bg: #90caf9;
+  --toggle-text: #ffffff;
+  --toggle-hover: #5a9bcf;
+  --project-item: #75baf3;
+  --box-shadow: rgba(255, 255, 255, 0.473);
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--toggle-bg);
+  color: var(--toggle-text);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1;
+}
+
+.toggle-button:hover {
+  background-color: var(
+    --toggle-hover
+  ); /* Slightly darker green for light mode */
+  color: #fff; /* Optional: brighter text */
+}
+
+.content {
+  margin: 0 auto;
+  margin-top: 80px;
+  max-width: 1000px;
+}
+
+/*hero portion starts here*/
+.hero {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero h1 {
+  color: var(--name);
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.hero p {
+  color: var(--name);
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.nav .nav-item {
+  color: var(--text-color);
+  text-decoration: none;
+  position: relative; /* Needed for ::before positioning */
+  display: inline-block;
+  padding-left: 30px; /* Default spacing for the dash */
+  transition: padding-left 0.3s ease; /* Smooth text shift animation */
+}
+
+.nav .nav-item::before {
+  content: "";
+  position: absolute; /* Position relative to the nav-item */
+  left: 0;
+  top: 50%; /* Vertically center the dash */
+  width: 20px; /* Default dash length */
+  height: 2px; /* Dash thickness */
+  background-color: var(--text-color); /* Dash color */
+  transform: translateY(-50%); /* Center the dash visually */
+  transition: width 0.3s ease; /* Smooth dash expansion animation */
+}
+
+/* On focus or active state */
+.nav .nav-item:focus::before,
+.nav .nav-item:active::before {
+  width: 40px;
+  color: var(--name);
+}
+
+.nav .nav-item:focus,
+.nav .nav-item:active {
+  padding-left: 50px;
+  color: var(--name);
+}
+
+.social-links {
+  margin-top: auto;
+}
+
+.icon {
+  color: var(--name);
+  font-size: 32px;
+  margin: 8px;
+}
+/*end of hero section*/
+
+/*Main potion starts here*/
+.main {
+  display: grid;
+  gap: 80px;
+}
+
+h1 {
+  color: var(--name);
+  margin-bottom: 24px;
+}
+.about span {
+  color: var(--name);
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
+
+.project-card {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* Progress Bar Styles */
+.progress-bar {
+  background-color: var(--progress-bg);
+  border-radius: 10px;
+  height: 12px; /* Height of the bar */
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar .progress {
+  background-color: var(--progress-fill);
+  height: 100%;
+  width: 0; /* Default width, adjust dynamically */
+  transition: width 0.4s ease; /* Smooth animation */
+  border-radius: 10px 0 0 10px; /* Rounded corners for the filled bar */
+}
+
+.progress-bar .progress::after {
+  content: attr(data-level) "%"; /* Dynamically show percentage */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--progress-text);
+  font-weight: bold;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  padding-left: 8px;
+  width: 100%;
+}
+.contact-form input,
+.contact-form button {
+  height: 40px;
+}
+
+.footer a {
+  color: var(--name);
+}
+/*Main portion ends here*/
+
+/*Project view more section */
+
+.project-view-more {
+  width: 90%;
+  max-width: 800px;
+  height: 500px;
+  position: fixed;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for element's size */
+  opacity: 1; /* Fully transparent initially */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  padding: 24px;
+  z-index: 1;
+  background-color: var(--background-color);
+  box-shadow: 0 4px 20px var(--box-shadow);
+}
+
+.project-view-more .top {
+  width: 100%;
+  display: flex;
+}
+
+.project-view-more .top a {
+  margin-left: auto;
+  font-size: 32px;
+}
+
+.project-items {
+  width: 100%;
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.project-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 80px 1fr 160px;
+  align-items: center;
+  padding: 0 8px;
+  border-bottom: var(--text-color);
+}
+
+.project-item img {
+  height: 40px;
+}
+.project-item p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+.project-item .info {
+  margin-left: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.project-item .butns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.project-item .butns a {
+  height: 32px;
+}
+.project-item:hover {
+  background-color: var(--project-item);
+  color: var(--name);
+}
+
+/*Project view more ends here*/
+
+/* Scrollbar Track */
+::-webkit-scrollbar {
+  width: 8px; /* Width for vertical scrollbars */
+  height: 8px; /* Height for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color); /* Background of the track */
+  border-radius: 10px; /* Rounded edges for the track */
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded edges for the thumb */
+  border: 2px solid var(--background-color); /* Adds padding around the thumb */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #357a38; /* Darker shade on hover for light mode */
+}
+
+/* Dark Mode Adjustments */
+.dark-mode ::-webkit-scrollbar-track {
+  background: #1e293b; /* Darker background for track */
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background-color: #90caf9; /* Light blue for thumb in dark mode */
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background-color: #5a9bcf; /* Darker blue on hover in dark mode */
+}
+
+/*Responsiveness of the web page with media query*/
+@media (max-width: 1300px) {
+  .content {
+    width: 87%;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+  .hero {
+    top: 60px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .content {
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .hero {
+    top: 50px;
+  }
+}
+
+@media (max-width: 770px) {
+  .content {
+    width: 98%;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+
+  .hero {
+    position: relative;
+    top: 0;
+    height: auto;
+  }
+  .nav {
+    display: none;
+  }
+  .buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+  }
+  .social-links {
+    margin-bottom: 24px;
+  }
+  .project-view-more {
+    height: 300px;
+  }
+  .project-item {
+    grid-template-columns: 60px 1fr 80px;
+    height: auto;
+  }
+  .project-item p {
+    font-size: 12px;
+  }
+  .project-item img {
+    height: 32px;
+  }
+  .project-item .info {
+    font-size: 10px;
+  }
+}
+
+/*End of responsiveness media query*/

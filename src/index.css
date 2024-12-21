@@ -1,0 +1,22 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --accent-color: #4caf50;
+}
+
+.dark-mode {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --accent-color: #90caf9;
+}
+
+.box {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.content {
+  width: 80%;
+}
